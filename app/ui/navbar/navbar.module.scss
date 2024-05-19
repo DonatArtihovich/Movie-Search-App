@@ -1,0 +1,49 @@
+.navbar {
+    width: 280px;
+}
+
+.navbarWrapper {
+    height: 100vh;
+    padding: 1.5rem;
+}
+
+.logoWrapper {
+    margin-bottom: 80px;
+}
+
+.logoTitle {
+    font-family: var(--second-family);
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+}
+
+.buttonsMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+}
+
+.menuLinkWrapper {
+    // "rounded-lg px-4 py-2 w-92 h-16 box-border"
+    border-radius: 8px;
+    padding: 10px;
+    // width: 232px;
+    // height: 42px;
+    box-sizing: border-box;
+}
+
+.menuLink {
+    // "text-base leading-7 m-0"
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    text-decoration: none;
+    color: black;
+}
+
+.checked a {
+    font-weight: 700;
+}

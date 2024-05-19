@@ -1,9 +1,11 @@
 'use client'
-
+import { classNames } from '@/app/lib/class-names';
+import cls from './navbar.module.scss'
 import { AppShell, Button, Flex, Menu, MenuItemProps, Title, useMantineTheme } from "@mantine/core";
 import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from 'react';
 
 interface MenuItem {
     label: string;
@@ -11,20 +13,21 @@ interface MenuItem {
     href: Url;
 }
 
-export function Navbar() {
-    const theme = useMantineTheme();
+const menuItems: MenuItem[] = [
+    { label: 'Movies', key: 'movies', href: '/' },
+    { label: 'Rated Movies', key: 'rated', href: '/rated' }
+]
 
-    const menuItems: MenuItem[] = [
-        { label: 'Movies', key: 'movies', href: '/' },
-        { label: 'Reted Movies', key: 'rated', href: '/rated' }
-    ]
+export function Navbar() {
+    const [checked, setChecked] = useState<string>(menuItems[0].key);
+    const theme = useMantineTheme();
 
     return (
         <nav
-            className="w-280"
+            className={cls.navbar}
         >
             <Flex
-                className='h-screen p-6'
+                className={cls.navbarWrapper}
                 w={280}
                 direction='column'
                 bg={theme.colors.appPurple[0]}
@@ -32,6 +35,7 @@ export function Navbar() {
             >
                 <Flex
                     gap={12}
+                    className={cls.logoWrapper}
                 >
                     <Image
                         src='/logo.svg'
@@ -41,7 +45,7 @@ export function Navbar() {
                     />
                     <Title
                         order={2}
-                        className='font-bold text-2xl tracking-tighter'
+                        className={cls.logoTitle}
                         component='h2'
                         c={theme.colors.appPurple[4]}
                     >
@@ -49,18 +53,29 @@ export function Navbar() {
                     </Title>
                 </Flex>
 
-                <Menu>
-                    {menuItems.map(item => (
-                        <Menu.Item
-                            key={item.key}
-                            defaultChecked={item.key === 'movies'}
-                        >
-                            <Link
-                                href={item.href}
-                            >{item.label}</Link>
-                        </Menu.Item>
-                    ))}
-                </Menu>
+                <ul
+                    className={cls.buttonsMenu}
+                >
+                    <Menu>
+                        {menuItems.map(item => (
+                            <Menu.Item
+                                key={item.key}
+                                defaultChecked={item.key === 'movies'}
+                                className={classNames(cls.menuLinkWrapper, checked === item.key && cls.checked)}
+                                bg={checked === item.key ? theme.colors.appPurple[1] : 'transparent'}
+                                w={232}
+                                h={42}
+                                onClick={() => setChecked(item.key)}
+                            >
+                                <Link
+                                    href={item.href}
+                                    className={cls.menuLink}
+                                    style={{ color: checked === item.key ? theme.colors.appPurple[4] : 'black' }}
+                                >{item.label}</Link>
+                            </Menu.Item>
+                        ))}
+                    </Menu>
+                </ul>
                 {/* <Flex>
                     <Button>Movies</Button>
                     <Button>Rated Movies</Button>
