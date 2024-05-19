@@ -1,17 +1,22 @@
 'use client'
 
-import { Button, Flex, NativeSelect, NumberInput, Title, useMantineTheme } from "@mantine/core";
+import { Flex, Title } from "@mantine/core";
 import { MoviesForm } from "./ui/movies/form";
 import cls from './movies.module.scss'
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const theme = useMantineTheme()
+  const [movies, setMovies] = useState<Movie[]>([])
+
+  useEffect(() => {
+    console.log(movies)
+  }, [movies])
 
   return (
     <Flex
       direction="column"
       className={cls.wrapper}
-      bg={theme.colors.gray[2]}
+      bg='var(--grey-200)'
     >
       <Title
         order={1}
@@ -19,7 +24,7 @@ export default function Home() {
       >
         Movies
       </Title>
-      <MoviesForm />
+      <MoviesForm setMovies={setMovies} />
     </Flex >
   );
 }
