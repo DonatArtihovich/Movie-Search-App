@@ -1,0 +1,15 @@
+.wrapper {
+    padding: 40px 90px;
+    flex-basis: 0;
+    max-width: 1160px;
+    height: 100vh;
+}
+
+.moviesTitle {
+    padding-bottom: 40px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    color: black;
+}

@@ -1,0 +1,1 @@
+export {MoviesForm} from './form'

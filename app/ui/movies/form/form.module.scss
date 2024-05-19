@@ -1,0 +1,98 @@
+.form {
+    max-width: 980px;
+}
+
+.genreInput,
+.yearInput {
+    :global {
+        .mantine-NativeSelect-input {
+            display: flex;
+            align-items: center;
+            padding-top: 4px;
+            color: var(--grey-500);
+        }
+
+        // align-items: center;
+        // justify-content: center;
+    }
+}
+
+.genreInput label,
+.yearInput label,
+.ratingInputsTitle {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.genreInput select,
+.yearInput select {
+    border: 1px solid var(--grey-300);
+    border-radius: 8px;
+    padding: 8px 12px;
+    width: 283px;
+    height: 42px;
+}
+
+.ratingsInput {
+    :global {
+        .mantine-NumberInput-control {
+            border: none !important;
+        }
+    }
+}
+
+.ratingsInput input {
+    border: 1px solid var(--grey-300);
+    border-radius: 8px;
+    padding: 8px 12px;
+    width: 137px;
+    height: 42px;
+}
+
+.resetInputsButton {
+    border: none;
+    background: transparent;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 143%;
+    height: auto;
+    align-self: flex-end;
+    margin-bottom: 12px;
+    padding: 0;
+}
+
+.mostPopularInput {
+    width: 284px;
+    align-self: flex-end;
+
+    input {
+        border: 1px solid var(--grey-300);
+        border-radius: 8px;
+        padding: 8px 12px;
+        height: 42px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+    }
+
+    label {
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 140%;
+        margin-bottom: 8px;
+    }
+}
+
+.defaultOption {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 143%;
+}

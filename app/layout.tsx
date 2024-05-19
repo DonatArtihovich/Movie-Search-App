@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import "@mantine/core/styles.css"
-import { Flex, MantineProvider } from "@mantine/core";
+import { Flex, MantineProvider, useMantineTheme } from "@mantine/core";
 import { Navbar } from "@/app/ui/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,6 +17,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <head>
@@ -27,13 +28,21 @@ export default function RootLayout({
             colors: {
               appPurple: ['#F2EBF9', '#E5D5FA', '#D1B4F8', '#BD93F7', '#9854F6', '#541F9D', '#000000', '#000000', '#000000', '#000000'],
               appYellow: ['#FAB005', '#FAB005', '#FAB005', '#FAB005', '#FAB005', '#FAB005', '#FAB005', '#FAB005', '#FAB005', '#FAB005'],
-              appGray: ['#F5F5F6', '#EAEBED', '#D5D6DC', '#ACADB9', '#7B7C88', '#000000', '#000000', '#000000', '#000000', '#000000']
+              appGrey: ['#F5F5F6', '#EAEBED', '#D5D6DC', '#ACADB9', '#7B7C88', '#000000', '#000000', '#000000', '#000000', '#000000']
             }
           }}
         >
-          <Navbar />
-          <Flex>
-            <main className={inter.className}>{children}</main>
+          <Flex w={'100vw'} h={'100vh'}>
+            <Navbar />
+            <main
+              className={inter.className}
+              style={{
+                width: 'calc(100vw - 280px)',
+                backgroundColor: 'var(--grey-200)'
+              }}
+            >
+              {children}
+            </main>
           </Flex>
         </MantineProvider>
       </body>
