@@ -26,16 +26,19 @@ export async function getMovies(props: {
     ratingFrom: number,
     ratingTo: number,
     page: number
-}): Promise<MovieResults> {
+}): Promise<MovieResults | null> {
     return (await apiInstance
                 .get(
                     `https://api.themoviedb.org/3/discover/movie?page=${props.page}&with_genres=${props.genre}&year=${props.year}&vote_average.gte=${props.ratingFrom}&vote_average.lte=${props.ratingTo}&sort_by=${props.sort}`
-                ).catch(e => console.error(e))
+                )
+                .catch(e => console.error(e))
             )
-            ?.data || {
-                page: 1,
-                results: [],
-                total_pages: 0,
-                total_results: 0
-            };
+            ?.data || null;
+}
+
+export async function getMovie(id: string): Promise<MovieType | null> {
+    return (await apiInstance
+        .get(`https://api.themoviedb.org/3/movie/${id}`)
+        .catch(e => console.error(e))
+    )?.data || null;
 }

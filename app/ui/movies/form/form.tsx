@@ -8,7 +8,7 @@ import { useForm } from "@mantine/form";
 import { useEffect, useState } from "react";
 
 type MoviesFormProps = {
-    setMovies: (movieResults: MovieResults) => void;
+    setMovies: (movieResults: MovieResults | null) => void;
     page: number;
     setPage: (page: number) => void;
 }
@@ -17,14 +17,14 @@ export function MoviesForm({ setMovies, page, setPage }: MoviesFormProps) {
     const [genres, setGenres] = useState<Genre[]>([])
 
     useEffect(() => {
-        new Promise(async (res) => {
+        new Promise(async () => {
             const genres: Genre[] = (await fetchGenres()).genres;
             setGenres(genres)
         })
     }, [])
 
     useEffect(() => {
-        new Promise(async res => {
+        new Promise(async () => {
             const values = form.getValues();
 
             const movies = await getMovies({

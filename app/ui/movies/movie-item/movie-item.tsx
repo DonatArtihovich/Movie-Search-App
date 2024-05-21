@@ -3,6 +3,7 @@
 import { Button, Card, Flex, Title, useMantineTheme } from '@mantine/core';
 import cls from './movie-item.module.scss'
 import Image from 'next/image';
+import Link from 'next/link';
 
 type MovieItemProps = {
     movie: Movie;
@@ -24,16 +25,19 @@ export function MovieItem({ movie }: MovieItemProps) {
                         />
                         <Flex direction='column' justify='space-between' style={{ minHeight: '170px', maxWidth: '263px' }} >
                             <Flex direction='column' gap={8}>
-                                <Title
+                                <Link
                                     className={cls.movieTitle}
                                     style={{ color: theme.colors.appPurple[4] }}
+                                    href={`/movies/${movie.id}`}
                                 >
                                     {movie.original_title}
-                                </Title>
+                                </Link>
                                 <p
                                     className={cls.releaseDate}
                                     style={{ color: theme.colors.appGrey[4] }}
-                                >{movie.release_date.split('-')[0]}</p>
+                                >
+                                    {movie.release_date.split('-')[0]}
+                                </p>
                                 <Flex align='center' gap={8}>
                                     <Flex align='center' gap={4}>
                                         <Image
