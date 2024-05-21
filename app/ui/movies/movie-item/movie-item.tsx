@@ -28,7 +28,7 @@ export function MovieItem({ movie }: MovieItemProps) {
                                     className={cls.movieTitle}
                                     style={{ color: theme.colors.appPurple[4] }}
                                 >
-                                    {movie.title}
+                                    {movie.original_title}
                                 </Title>
                                 <p
                                     className={cls.releaseDate}
