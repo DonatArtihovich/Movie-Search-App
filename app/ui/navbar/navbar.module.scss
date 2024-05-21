@@ -1,11 +1,11 @@
 .navbar {
     width: 280px;
-    height: 100vh;
+    min-height: 100vh;
     flex-basis: 280px;
 }
 
 .navbarWrapper {
-    height: 100vh;
+    height: 100%;
     padding: 1.5rem;
 }
 

@@ -24,11 +24,12 @@ export async function getMovies(props: {
     year: number,
     sort: string,
     ratingFrom: number,
-    ratingTo: number 
-}): Promise<Movie[]> {
+    ratingTo: number,
+    page: number
+}): Promise<MovieResults> {
     return (await apiInstance
                 .get(
-                    `https://api.themoviedb.org/3/discover/movie?with_genres=${props.genre}&year=${props.year}&vote_average.gte=${props.ratingFrom}&vote_average.lte=${props.ratingTo}&sort_by=${props.sort}`
+                    `https://api.themoviedb.org/3/discover/movie?page=${props.page}&with_genres=${props.genre}&year=${props.year}&vote_average.gte=${props.ratingFrom}&vote_average.lte=${props.ratingTo}&sort_by=${props.sort}`
                 )
             )
             .data;

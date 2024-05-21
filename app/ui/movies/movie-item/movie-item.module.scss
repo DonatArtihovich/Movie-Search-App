@@ -1,0 +1,56 @@
+.MovieItem {
+    list-style: none;
+
+    p {
+        margin: 0;
+    }
+}
+
+.MovieItemCard {
+    border-radius: 12px;
+    padding: 24px;
+    width: 482px;
+    height: 218px;
+}
+
+.movieTitle {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.releaseDate {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.ratingVoteAverage {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.ratingVoteCount {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.genresTitle {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.starButton {
+    background: transparent;
+    border: none;
+
+    &:active,
+    &:hover {
+        background: transparent;
+    }
+}

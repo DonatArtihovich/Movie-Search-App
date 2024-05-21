@@ -8,10 +8,11 @@ import { useForm } from "@mantine/form";
 import { useEffect, useState } from "react";
 
 type MoviesFormProps = {
-    setMovies: (moviesList: Movie[]) => void;
+    setMovies: (movieResults: MovieResults) => void;
+    page: number;
 }
 
-export function MoviesForm({ setMovies }: MoviesFormProps) {
+export function MoviesForm({ setMovies, page }: MoviesFormProps) {
     const [genres, setGenres] = useState<Genre[]>([])
 
     useEffect(() => {
@@ -21,17 +22,40 @@ export function MoviesForm({ setMovies }: MoviesFormProps) {
         })
     }, [])
 
+    useEffect(() => {
+        new Promise(async res => {
+            const values = form.getValues();
+
+            const movies = await getMovies({
+                ...values as {
+                    genre: Genre['name'],
+                    year: number,
+                    sort: string,
+                    ratingFrom: number,
+                    ratingTo: number,
+                },
+                page
+            });
+
+            setMovies(movies);
+        })
+
+    }, [page])
+
     const form = useForm({
         mode: 'controlled',
     })
 
     const handleChange = form.onSubmit(async (values) => {
-        const movies = await getMovies(values as {
-            genre: Genre['name'],
-            year: number,
-            sort: string,
-            ratingFrom: number,
-            ratingTo: number
+        const movies = await getMovies({
+            ...values as {
+                genre: Genre['name'],
+                year: number,
+                sort: string,
+                ratingFrom: number,
+                ratingTo: number,
+            },
+            page
         });
 
         setMovies(movies);

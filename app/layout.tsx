@@ -32,7 +32,7 @@ export default function RootLayout({
             }
           }}
         >
-          <Flex w={'100vw'} h={'100vh'}>
+          <Flex w={'100vw'} min-h={'100vh'}>
             <Navbar />
             <main
               className={inter.className}

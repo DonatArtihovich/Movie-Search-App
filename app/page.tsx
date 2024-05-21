@@ -1,15 +1,17 @@
 'use client'
 
-import { Flex, Title } from "@mantine/core";
+import { Flex, Pagination, Title } from "@mantine/core";
 import { MoviesForm } from "./ui/movies/form";
 import cls from './movies.module.scss'
 import { useEffect, useState } from "react";
+import { MoviesList } from "./ui/movies/movies-list";
 
 export default function Home() {
-  const [movies, setMovies] = useState<Movie[]>([])
+  const [movies, setMovies] = useState<null | MovieResults>(null);
+  const [activePage, setActivePage] = useState<number>(1)
 
   useEffect(() => {
-    console.log(movies)
+    console.log(movies);
   }, [movies])
 
   return (
@@ -24,7 +26,20 @@ export default function Home() {
       >
         Movies
       </Title>
-      <MoviesForm setMovies={setMovies} />
+      <MoviesForm setMovies={setMovies} page={activePage} />
+      {movies &&
+        <Flex direction='column'>
+          <MoviesList movies={movies.results} />
+          <Pagination
+            total={movies.total_pages}
+            style={{
+              alignSelf: 'flex-end'
+            }}
+            value={activePage}
+            onChange={setActivePage}
+          />
+        </Flex>
+      }
     </Flex >
   );
 }
