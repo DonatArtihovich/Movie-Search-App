@@ -30,7 +30,12 @@ export async function getMovies(props: {
     return (await apiInstance
                 .get(
                     `https://api.themoviedb.org/3/discover/movie?page=${props.page}&with_genres=${props.genre}&year=${props.year}&vote_average.gte=${props.ratingFrom}&vote_average.lte=${props.ratingTo}&sort_by=${props.sort}`
-                )
+                ).catch(e => console.error(e))
             )
-            .data;
+            ?.data || {
+                page: 1,
+                results: [],
+                total_pages: 0,
+                total_results: 0
+            };
 }

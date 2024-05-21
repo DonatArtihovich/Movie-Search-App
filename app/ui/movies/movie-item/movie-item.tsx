@@ -45,7 +45,12 @@ export function MovieItem({ movie }: MovieItemProps) {
                                         <p className={cls.ratingVoteAverage}>{movie.vote_average.toFixed(1)}</p>
                                     </Flex>
 
-                                    <p className={cls.ratingVoteCount} style={{ color: theme.colors.appGrey[4] }}>({movie.vote_count})</p>
+                                    <p className={cls.ratingVoteCount} style={{ color: theme.colors.appGrey[4] }}>
+                                        ({movie.vote_count > 1000000 ? `${(movie.vote_count / 1000000).toFixed(1)}M`
+                                            : movie.vote_count > 1000
+                                                ? `${(movie.vote_count / 1000).toFixed(1)}K`
+                                                : movie.vote_count})
+                                    </p>
                                 </Flex>
                             </Flex>
                             <Flex gap={8}>

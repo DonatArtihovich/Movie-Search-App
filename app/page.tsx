@@ -5,6 +5,7 @@ import { MoviesForm } from "./ui/movies/form";
 import cls from './movies.module.scss'
 import { useEffect, useState } from "react";
 import { MoviesList } from "./ui/movies/movies-list";
+import { NoMoviesResult } from "./ui/movies/no-movies/no-movies";
 
 export default function Home() {
   const [movies, setMovies] = useState<null | MovieResults>(null);
@@ -26,8 +27,12 @@ export default function Home() {
       >
         Movies
       </Title>
-      <MoviesForm setMovies={setMovies} page={activePage} />
-      {movies &&
+      <MoviesForm
+        setMovies={setMovies}
+        page={activePage}
+        setPage={setActivePage}
+      />
+      {movies && movies.results.length > 0 ?
         <Flex direction='column'>
           <MoviesList movies={movies.results} />
           <Pagination
@@ -37,8 +42,10 @@ export default function Home() {
             }}
             value={activePage}
             onChange={setActivePage}
+            className={cls.pagination}
           />
         </Flex>
+        : <NoMoviesResult />
       }
     </Flex >
   );

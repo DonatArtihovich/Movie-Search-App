@@ -10,9 +10,10 @@ import { useEffect, useState } from "react";
 type MoviesFormProps = {
     setMovies: (movieResults: MovieResults) => void;
     page: number;
+    setPage: (page: number) => void;
 }
 
-export function MoviesForm({ setMovies, page }: MoviesFormProps) {
+export function MoviesForm({ setMovies, page, setPage }: MoviesFormProps) {
     const [genres, setGenres] = useState<Genre[]>([])
 
     useEffect(() => {
@@ -47,6 +48,8 @@ export function MoviesForm({ setMovies, page }: MoviesFormProps) {
     })
 
     const handleChange = form.onSubmit(async (values) => {
+        setPage(1);
+
         const movies = await getMovies({
             ...values as {
                 genre: Genre['name'],
