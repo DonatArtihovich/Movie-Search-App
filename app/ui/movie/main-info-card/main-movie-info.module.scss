@@ -1,0 +1,54 @@
+.movieCard {
+    border-radius: 12px;
+    padding: 24px;
+    width: 800px;
+    height: 400px;
+}
+
+.ratingVoteAverage {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.ratingVoteCount {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.starButton {
+    background: transparent;
+    border: none;
+
+    &:active,
+    &:hover {
+        background: transparent;
+    }
+}
+
+.additionalDataGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.additionalDataTitle {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--grey-600);
+    text-wrap: nowrap;
+    margin-right: 8px;
+    width: 140px;
+    padding: 0;
+}
+
+.additionalDataText {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    padding: 0;
+    // max-width: 
+}

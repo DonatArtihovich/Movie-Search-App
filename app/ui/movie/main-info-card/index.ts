@@ -1,0 +1,1 @@
+export {MainMovieInfoCard} from './main-movie-info'
