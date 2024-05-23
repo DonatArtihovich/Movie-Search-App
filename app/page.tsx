@@ -1,11 +1,12 @@
 'use client'
 
-import { Flex, Pagination, Title } from "@mantine/core";
+import { Flex, Title } from "@mantine/core";
 import { MoviesForm } from "./ui/movies/form";
 import cls from './movies.module.scss'
 import { useEffect, useState } from "react";
 import { MoviesList } from "./ui/movies/movies-list";
 import { NoMoviesResult } from "./ui/movies/no-movies/no-movies";
+import { Pagination } from "./ui/movies/pagination";
 
 export default function Home() {
   const [movies, setMovies] = useState<null | MovieResults>(null);
@@ -37,12 +38,8 @@ export default function Home() {
           <MoviesList movies={movies.results} />
           <Pagination
             total={movies.total_pages}
-            style={{
-              alignSelf: 'flex-end'
-            }}
             value={activePage}
             onChange={setActivePage}
-            className={cls.pagination}
           />
         </Flex>
         : <NoMoviesResult />
