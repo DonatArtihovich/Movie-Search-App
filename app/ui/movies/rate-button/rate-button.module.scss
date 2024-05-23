@@ -1,0 +1,18 @@
+.rateButton {
+    background-color: transparent;
+    padding: 0;
+
+    &:hover,
+    &:active {
+        background-color: transparent;
+        border: none;
+    }
+}
+
+.movieRating {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: black;
+}

@@ -4,6 +4,7 @@ import { Button, Card, Flex, Title, useMantineTheme } from '@mantine/core';
 import cls from './movie-item.module.scss'
 import Image from 'next/image';
 import Link from 'next/link';
+import { RateButton } from '../rate-button';
 
 type MovieItemProps = {
     movie: Movie;
@@ -68,9 +69,11 @@ export function MovieItem({ movie }: MovieItemProps) {
                             </Flex>
                         </Flex>
                     </Flex>
-                    <Button className={cls.starButton}>
-                        <Image src='/grey-star.svg' alt='star' width={28} height={28} />
-                    </Button>
+                    <RateButton
+                        rating={movie.rating}
+                        movieName={movie.original_title}
+                        movieId={movie.id}
+                    />
                 </Flex>
             </Card>
         </li>

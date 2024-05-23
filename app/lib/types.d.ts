@@ -18,6 +18,7 @@ type Movie = {
     video: boolean;
     vote_average: number;
     vote_count: number;
+    rating: null | number;
 }
 
 
@@ -53,7 +54,13 @@ type MovieType =
     status: string;
     tagline: string;
     title: string;
-    video: false | string[];
+    video: boolean;
     vote_average: number;
     vote_count: number;
+    rating: null | number;
+}
+
+type MovieRating = {
+    id: number;
+    rating: number;
 }

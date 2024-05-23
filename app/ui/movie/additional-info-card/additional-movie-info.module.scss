@@ -1,0 +1,41 @@
+.movieCard {
+    border-radius: 12px;
+    padding: 24px;
+    width: 800px;
+}
+
+.sectionHeader {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+}
+
+.movieOverview {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.companyLogoImage {
+    height: auto;
+    width: 100%;
+}
+
+.companiesListItem {
+    list-style: none;
+}
+
+.imageWrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    border: 0.5px solid #f1f1f1;
+    display: flex;
+    align-items: center;
+}

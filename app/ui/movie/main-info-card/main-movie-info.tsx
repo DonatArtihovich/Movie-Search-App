@@ -2,8 +2,10 @@
 
 import { getMoneyString, getTimeString, months } from '@/app/lib/const';
 import cls from './main-movie-info.module.scss'
-import { Button, Card, Flex, Title, useMantineTheme } from "@mantine/core";
+import { Card, Flex, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
+import { AdditionalDataItem } from '../additional-data-item';
+import { RateButton } from '../../movies/rate-button';
 
 type MainMovieInfoCard = {
     movie: MovieType;
@@ -14,7 +16,7 @@ export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
 
     const additionalData = [
         { header: 'Duration', data: getTimeString(movie.runtime) },
-        { header: 'Premiere', data: `${months[Number(movie.release_date.split('-')[1]) - 1]} ${Number(movie.release_date.split('-')[2])}, ${movie.release_date.split('-')[0]}` },
+        { header: 'Premiere', data: movie.runtime && `${months[Number(movie.release_date.split('-')[1]) - 1]} ${Number(movie.release_date.split('-')[2])}, ${movie.release_date.split('-')[0]}` },
         {
             header: 'Budget',
             data: `${getMoneyString(movie.budget)}`
@@ -22,7 +24,7 @@ export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
         { header: 'Gross worldwide', data: `${getMoneyString(movie.revenue)}` },
         { header: 'Genres', data: movie.genres.map(g => g.name).join(', ') }
     ]
-        .filter(({ data }) => data);
+        .filter(({ data }) => Boolean(data)) as Record<'header' | 'data', string>[];
 
     return (
         <Card className={cls.movieCard}>
@@ -72,18 +74,17 @@ export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
 
                         <div className={cls.additionalDataGrid}>
                             {additionalData.map(item =>
-                                <>
-                                    <div key={item.header} className={cls.additionalDataTitle}>{item.header}</div>
-                                    <div key={item.data} className={cls.additionalDataText}>{item.data}</div>
-                                </>
+                                <AdditionalDataItem key={item.header} {...item} />
                             )
                             }
                         </div>
                     </Flex>
                 </Flex>
-                <Button className={cls.starButton}>
-                    <Image src='/grey-star.svg' alt='star' width={28} height={28} />
-                </Button>
+                <RateButton
+                    rating={movie.rating}
+                    movieName={movie.original_title}
+                    movieId={movie.id}
+                />
             </Flex>
         </Card>
     )

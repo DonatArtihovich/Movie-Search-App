@@ -1,0 +1,1 @@
+export {RateButton} from './rate-button'

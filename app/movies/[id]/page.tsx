@@ -2,6 +2,7 @@
 import cls from './movie-page.module.scss'
 import { getMovie } from "@/app/lib/actions";
 import { getMoneyString, getTimeString, months } from '@/app/lib/const';
+import { AdditionalMovieInfoCard } from '@/app/ui/movie/additional-info-card';
 import { MainMovieInfoCard } from '@/app/ui/movie/main-info-card';
 import { Flex, Breadcrumbs, Card, Title, useMantineTheme, Button, Table, Loader, Grid } from "@mantine/core";
 import Image from 'next/image';
@@ -65,6 +66,7 @@ export default function MoviePage({
                         {items}
                     </Breadcrumbs>
                     <MainMovieInfoCard movie={movie} />
+                    <AdditionalMovieInfoCard movie={movie} />
                 </Flex>
             }
         </>
