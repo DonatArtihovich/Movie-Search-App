@@ -1,0 +1,42 @@
+.wrapper {
+    border: 1px solid var(--grey-200);
+    border-radius: 8px;
+    padding: 0px 12px;
+    width: 490px;
+    height: 48px;
+    background-color: white;
+}
+
+.textInput {
+    width: 70%;
+
+    :global {
+        .mantine-TextInput-input {
+            border: none;
+            background-color: transparent;
+            padding-left: 24px;
+        }
+
+        .mantine-TextInput-section {
+            width: 16px;
+        }
+    }
+}
+
+.searchButton {
+    border-radius: 8px;
+    padding: 6px 20px;
+    width: 88px;
+    height: 32px;
+    background: var(--purple-main-500);
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    text-align: center;
+
+    &:hover,
+    &:active {
+        background-color: var(--purple-main-500);
+    }
+}
