@@ -54,7 +54,7 @@ export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
                                 <Flex align='center' gap={8}>
                                     <Flex align='center' gap={4}>
                                         <Image
-                                            src='/rating-star-yellow.svg'
+                                            src='/yellow-star.svg'
                                             alt='star'
                                             width={28}
                                             height={28}

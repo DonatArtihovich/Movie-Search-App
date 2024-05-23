@@ -49,7 +49,7 @@ export function RateModal({ opened, onClose, movieName, movieRating, movieId }: 
                             alt='star'
                         />}
                         fullSymbol={<img
-                            src='/purple-star.svg'
+                            src='/yellow-star.svg'
                             alt='star'
                         />}
                     />
