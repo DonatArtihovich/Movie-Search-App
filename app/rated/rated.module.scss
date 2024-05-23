@@ -2,4 +2,30 @@
     max-width: 980px;
     padding: 40px 90px;
     box-sizing: content-box;
+    min-height: 100vh;
+}
+
+.notFoundTitle {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.notFoundButton {
+    border-radius: 8px;
+    padding: 10px 20px;
+    width: 122px;
+    height: 40px;
+    background: var(--purple-main-500);
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    text-align: center;
+    color: white;
+
+    &:hover,
+    &:active {
+        background: var(--purple-main-500);
+    }
 }
