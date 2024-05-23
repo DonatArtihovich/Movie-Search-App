@@ -1,6 +1,6 @@
 const KEY = 'ratings';
 
-export function getMoviesRatings (): MovieRating[] | null {
+export function getMoviesRatings (): RatedMovie[] | null {
     const movieRatings = localStorage.getItem(KEY);
 
     return movieRatings
@@ -8,13 +8,13 @@ export function getMoviesRatings (): MovieRating[] | null {
         : null;
 }
 
-export function getMovieRating(movieId: number): MovieRating | null {
+export function getMovieRating(movieId: number): RatedMovie | null {
     const movieRatings = localStorage.getItem(KEY);
 
     if(movieRatings) {
         const movie = JSON
             .parse(movieRatings)
-            .find((m: MovieRating) => m.id === movieId)
+            .find((m: RatedMovie) => m.id === movieId)
 
         return movie || null;
     }
@@ -22,20 +22,20 @@ export function getMovieRating(movieId: number): MovieRating | null {
     return null;
 }
 
-export function setMovieRating(movieId: number, rating: number) {
+export function setMovieRating(movie: RatedMovie) {
     const movieRatings = localStorage.getItem(KEY);
 
     if(movieRatings) {
         const movieRatingsArray = JSON.parse(movieRatings);
 
-        if(movieRatingsArray.findIndex((m: MovieRating) => m.id === movieId) > -1) {
+        if(movieRatingsArray.findIndex((m: RatedMovie) => m.id === movie.id) > -1) {
             localStorage.setItem(
                 KEY, 
                 JSON
                 .stringify(
                     JSON
                     .parse(movieRatings)
-                    .map((m: MovieRating) => m.id === movieId? {...m, rating} : m)
+                    .map((m: RatedMovie) => m.id === movie.id? {...movie} : m)
                 )
             )
         } else {
@@ -45,16 +45,13 @@ export function setMovieRating(movieId: number, rating: number) {
                 .stringify(
                     [...JSON
                         .parse(movieRatings),
-                        {
-                            id: movieId,
-                            rating
-                        }
+                        movie
                     ]
                 )
             )
         }
     } else {
-        localStorage.setItem(KEY, JSON.stringify([{id: movieId, rating}] satisfies MovieRating[]));
+        localStorage.setItem(KEY, JSON.stringify([movie] satisfies RatedMovie[]));
     }
 }
 
@@ -65,8 +62,11 @@ export function removeMovieRating(movieId: number) {
         localStorage.setItem(
             KEY, 
             JSON
-                .parse(movieRatings)
-                .filter((m: MovieRating) => m.id !== movieId)
+            .stringify(
+                JSON
+                    .parse(movieRatings)
+                    .filter((m: RatedMovie) => m.id !== movieId)
+            )
         );
     } 
 }

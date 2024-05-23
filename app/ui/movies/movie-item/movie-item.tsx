@@ -70,9 +70,7 @@ export function MovieItem({ movie }: MovieItemProps) {
                         </Flex>
                     </Flex>
                     <RateButton
-                        rating={movie.rating}
-                        movieName={movie.original_title}
-                        movieId={movie.id}
+                        movie={movie}
                     />
                 </Flex>
             </Card>

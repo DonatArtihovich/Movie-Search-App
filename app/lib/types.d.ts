@@ -60,7 +60,6 @@ type MovieType =
     rating: null | number;
 }
 
-type MovieRating = {
-    id: number;
+interface RatedMovie extends Movie {
     rating: number;
-}
+} 

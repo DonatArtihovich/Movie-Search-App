@@ -6,21 +6,19 @@ import { removeMovieRating, setMovieRating } from "@/app/lib/rating";
 type RateModalProps = {
     opened: boolean;
     onClose: () => void;
-    movieName: string;
-    movieRating: number;
-    movieId: number;
+    movie: Movie;
 }
 
-export function RateModal({ opened, onClose, movieName, movieRating, movieId }: RateModalProps) {
-    const [value, setValue] = useState<number>(movieRating);
+export function RateModal({ opened, onClose, movie }: RateModalProps) {
+    const [value, setValue] = useState<number>(movie.rating || 0);
 
     const saveRating = () => {
-        setMovieRating(movieId, value);
+        setMovieRating({ ...movie, rating: value });
         onClose();
     }
 
     const removeRating = () => {
-        removeMovieRating(movieId);
+        removeMovieRating(movie.id);
     }
 
     return (
@@ -35,7 +33,7 @@ export function RateModal({ opened, onClose, movieName, movieRating, movieId }: 
             <Card>
                 <Divider w={'100%'} />
                 <Flex direction='column' gap={16} className={cls.wrapper}>
-                    <Title order={2} className={cls.title}>{movieName}</Title>
+                    <Title order={2} className={cls.title}>{movie.original_title}</Title>
                     <Rating
                         defaultValue={0}
                         value={value}

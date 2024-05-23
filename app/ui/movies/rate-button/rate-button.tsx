@@ -8,21 +8,22 @@ import { RateModal } from '../rate-modal';
 import { getMoviesRatings } from '@/app/lib/rating';
 
 type RateButtonProps = {
-    rating: null | number;
-    movieName: string;
-    movieId: number;
+    movie: Movie | { id: number };
+    readOnly?: boolean;
 }
 
-export function RateButton({ rating, movieName, movieId }: RateButtonProps) {
+export function RateButton({ movie, readOnly }: RateButtonProps) {
     const [modalOpened, setModalOpened] = useState<boolean>(false);
 
-    const movieRating = getMoviesRatings()?.find(m => m.id === movieId)?.rating ?? 0;
+    const movieRating = getMoviesRatings()?.find(m => m.id === movie.id)?.rating ?? 0;
+    console.log(movieRating);
 
     return (
         <>
             <Button
                 className={cls.rateButton}
-                onClick={() => setModalOpened(!modalOpened)}
+                onClick={() => !readOnly && setModalOpened(!modalOpened)}
+                disabled={readOnly}
             >
                 {movieRating > 0
                     ?
@@ -35,13 +36,13 @@ export function RateButton({ rating, movieName, movieId }: RateButtonProps) {
 
                 }
             </Button>
-            <RateModal
-                opened={modalOpened}
-                onClose={() => setModalOpened(false)}
-                movieName={movieName}
-                movieRating={rating || 0}
-                movieId={movieId}
-            />
+            {!readOnly &&
+                <RateModal
+                    opened={modalOpened}
+                    onClose={() => setModalOpened(false)}
+                    movie={movie as Movie}
+                />
+            }
         </>
     )
 }

@@ -3,7 +3,7 @@ import cls from './movies-list.module.scss'
 import { Flex, Pagination } from '@mantine/core';
 
 type MoviesListProps = {
-    movies: Movie[];
+    movies: Movie[] | RatedMovie[];
 }
 
 export function MoviesList({ movies }: MoviesListProps) {

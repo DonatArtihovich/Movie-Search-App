@@ -81,9 +81,8 @@ export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
                     </Flex>
                 </Flex>
                 <RateButton
-                    rating={movie.rating}
-                    movieName={movie.original_title}
-                    movieId={movie.id}
+                    movie={{ id: movie.id }}
+                    readOnly
                 />
             </Flex>
         </Card>
