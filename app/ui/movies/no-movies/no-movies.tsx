@@ -13,7 +13,7 @@ export function NoMoviesResult() {
                 alt='No movies found'
                 className={cls.image}
             />
-            <Title className={cls.title}>We don't have such movies, look for another one</Title>
+            <Title className={cls.title}>We don&apos;t have such movies, look for another one</Title>
         </Flex>
     )
 }
