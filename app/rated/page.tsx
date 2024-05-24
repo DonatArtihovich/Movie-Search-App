@@ -106,7 +106,7 @@ export default function Rated() {
                         height={300}
                     />
                     <Title className={cls.notFoundTitle}>
-                        You haven't rated any films yet
+                        You haven&apos;t rated any films yet
                     </Title>
                     <Button
                         component={Link}
