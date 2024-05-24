@@ -1,0 +1,73 @@
+.movieCard {
+    border-radius: 12px;
+    padding: 24px;
+    width: 800px;
+    min-height: 400px;
+}
+
+.image {
+    height: auto;
+}
+
+.ratingVoteAverage {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.ratingVoteCount {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.starButton {
+    background: transparent;
+    border: none;
+
+    &:active,
+    &:hover {
+        background: transparent;
+    }
+}
+
+.additionalDataGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+@media(max-width: 1440px) {
+    .movieCard {
+        width: 60vw;
+    }
+}
+
+@media(max-width: 1200px) {
+    .movieTitle {
+        max-width: 70%;
+    }
+}
+
+@media(max-width: 900px) {
+    .movieTitle {
+        font-size: 20px;
+        max-width: 60%;
+    }
+
+    .mainWrapper {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 600px) {
+    .movieCard {
+        width: 80vw;
+    }
+
+    .movieTitle {
+        font-size: 26px;
+        max-width: 90%;
+    }
+}

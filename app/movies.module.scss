@@ -1,0 +1,57 @@
+.wrapper {
+    padding: 40px 90px;
+    flex-basis: 0;
+    max-width: 1160px;
+    min-height: 100vh;
+}
+
+.moviesTitle {
+    padding-bottom: 40px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    color: black;
+}
+
+.notFoundButton {
+    border-radius: 8px;
+    padding: 10px 20px;
+    width: 103px;
+    height: 40px;
+    background: var(--purple-main-500);
+}
+
+.notFoundText {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.notFoundFlex {
+    position: absolute;
+    top: 30%;
+    left: 20%
+}
+
+@media(max-width: 950px) {
+    .notFoundImage {
+        width: 60vw;
+        height: auto;
+    }
+
+    .notFoundImage {
+        width: 80vw;
+        height: auto;
+    }
+
+    .notFoundText {
+        font-size: 16px;
+        max-width: 80vw;
+        text-align: center;
+    }
+
+    .notFoundFlex {
+        left: 10%;
+    }
+}

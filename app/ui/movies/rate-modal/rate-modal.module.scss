@@ -1,0 +1,91 @@
+.modal {
+
+    :global {
+        .mantine-Modal-header {
+            width: 380px;
+        }
+
+        .mantine-Modal-title {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+        }
+
+        .mantine-Modal-body,
+        .mantine-Card-root {
+            padding: 0;
+        }
+    }
+}
+
+.wrapper {
+    padding: 16px;
+}
+
+.title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.ratingInput {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.saveButton {
+    border-radius: 8px;
+    padding: 10px 20px;
+    width: 73px;
+    height: 40px;
+    background: var(--purple-main-500);
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    text-align: center;
+
+    &:hover,
+    &:active {
+        background-color: var(--purple-main-500);
+    }
+}
+
+.removeRatingButton {
+    padding: 0;
+    width: 98px;
+    height: 20px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    color: var(--purple-main-500);
+
+    background-color: transparent;
+
+    &:hover,
+    &:active {
+        background-color: transparent;
+        color: var(--purple-main-500);
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@media(max-width: 500px) {
+    .modal {
+        :global {
+            .mantine-Modal-header {
+                width: 90vw;
+            }
+        }
+    }
+
+    .wrapper {
+        padding: 0 5px 10px;
+    }
+}

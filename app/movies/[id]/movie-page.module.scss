@@ -1,0 +1,35 @@
+.moviePage {
+    padding: 40px 180px;
+
+    p {
+        margin: 0;
+    }
+}
+
+.breadcrumbsLink {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 143%;
+    color: var(--purple-main-500);
+    text-decoration: none;
+}
+
+.breadcrumbs {
+    align-self: flex-start;
+}
+
+@media(max-width: 1440px) {
+    .moviePage {
+        width: 70vw;
+        padding: 40px 0;
+        align-items: center;
+        margin: 0 auto;
+    }
+}
+
+@media(max-width: 700px) {
+    .moviePage {
+        padding-top: 55px;
+    }
+}

@@ -1,0 +1,83 @@
+.MovieItem {
+    list-style: none;
+    position: relative;
+
+    p {
+        margin: 0;
+    }
+}
+
+.MovieItemCard {
+    border-radius: 12px;
+    padding: 24px;
+    width: 482px;
+    height: 218px;
+}
+
+.movieTitle {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.releaseDate {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.ratingVoteAverage {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+.ratingVoteCount {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.genresTitle {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+@media (max-width: 1400px) {
+    .MovieItemCard {
+        width: 32vw;
+    }
+}
+
+@media (max-width: 1250px) {
+    .MovieItemCard {
+        width: 300px;
+        height: auto;
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .movieTitle {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 980px) {
+    .MovieItemCard {
+        width: 50vw;
+    }
+}
+
+@media(max-width: 700px) {
+    .MovieItemCard {
+        width: 70vw;
+    }
+}
+
+@media(max-width: 500px) {}

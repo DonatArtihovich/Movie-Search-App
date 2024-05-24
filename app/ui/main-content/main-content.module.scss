@@ -1,0 +1,23 @@
+.burgerWrapper {
+    position: absolute;
+    top: 45px;
+    left: 45px;
+    z-index: 1000;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+    z-index: 800;
+}
+
+@media(max-width: 500px) {
+    .burgerWrapper {
+        top: 20px;
+        left: 20px;
+    }
+}

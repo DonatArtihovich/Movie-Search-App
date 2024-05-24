@@ -1,0 +1,36 @@
+.additionalDataTitle {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--grey-600);
+    text-wrap: nowrap;
+    margin-right: 8px;
+    width: 140px;
+    padding: 0;
+}
+
+.additionalDataText {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    padding: 0;
+}
+
+@media(max-width: 900px) {
+
+    .additionalDataText,
+    .additionalDataTitle {
+        font-size: 14px;
+    }
+
+    .additionalDataTitle {
+        width: 12vw;
+    }
+}
+
+@media(max-width: 600px) {
+    .additionalDataTitle {
+        width: 140px;
+    }
+}
