@@ -39,3 +39,15 @@
     display: flex;
     align-items: center;
 }
+
+@media(max-width: 1440px) {
+    .movieCard {
+        width: 60vw;
+    }
+}
+
+@media(max-width: 600px) {
+    .movieCard {
+        width: 80vw;
+    }
+}

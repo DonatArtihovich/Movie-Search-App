@@ -21,8 +21,18 @@ export function MovieItem({ movie, genres }: MovieItemProps) {
     return (
         <li className={cls.MovieItem}>
             <Card className={cls.MovieItemCard}>
-                <Flex justify='space-between'>
-                    <Flex gap={16}>
+                <Flex
+                    justify='space-between'
+
+                >
+                    <Flex
+                        gap={16}
+                        direction={width <= 500
+                            ? 'column'
+                            : 'row'
+                        }
+                        align='center'
+                    >
                         <Image
                             src={`https://image.tmdb.org/t/p/original${movie.poster_path}` || '/no-poster.svg'}
                             alt={movie.title}

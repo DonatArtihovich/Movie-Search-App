@@ -36,3 +36,9 @@
         gap: 10px;
     }
 }
+
+@media(max-width: 500px) {
+    .wrapper {
+        padding: 50px 0;
+    }
+}

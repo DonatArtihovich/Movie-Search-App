@@ -16,3 +16,21 @@
     line-height: 125%;
     padding: 0;
 }
+
+@media(max-width: 900px) {
+
+    .additionalDataText,
+    .additionalDataTitle {
+        font-size: 14px;
+    }
+
+    .additionalDataTitle {
+        width: 12vw;
+    }
+}
+
+@media(max-width: 600px) {
+    .additionalDataTitle {
+        width: 140px;
+    }
+}

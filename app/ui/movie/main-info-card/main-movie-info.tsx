@@ -6,6 +6,7 @@ import { Card, Flex, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import { AdditionalDataItem } from '../additional-data-item';
 import { RateButton } from '../../movies/rate-button';
+import useWindowSize from '@/app/lib/hooks/use-window-size';
 
 type MainMovieInfoCard = {
     movie: MovieType;
@@ -13,6 +14,7 @@ type MainMovieInfoCard = {
 
 export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
     const theme = useMantineTheme();
+    const { width } = useWindowSize();
 
     const additionalData = [
         { header: 'Duration', data: getTimeString(movie.runtime) },
@@ -28,25 +30,50 @@ export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
 
     return (
         <Card className={cls.movieCard}>
-            <Flex justify='space-between'>
-                <Flex gap={16}>
+            <Flex justify={width > 900 ? 'space-between' : 'center'} className={cls.mainWrapper}>
+                <Flex
+                    gap={16}
+                    direction={width < 900
+                        ? 'column'
+                        : 'row'}
+                    align='center'
+                >
                     <Image
                         src={movie ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : '/no-poster.svg'}
                         alt='Movie Poster'
-                        width={250}
+                        width={width > 500 ? 250 : 200}
                         height={352}
+                        className={cls.image}
                     />
-                    <Flex direction='column' justify='space-between' style={{
-                        maxWidth: '442px'
-                    }}>
+                    <Flex
+                        direction='column'
+                        justify='space-between'
+                        style={{
+                            maxWidth: '442px',
+                        }}
+                    >
                         <Flex direction='column'>
                             <Flex direction='column' gap={8}>
-                                <Title
-                                    className={cls.movieTitle}
-                                    style={{ color: theme.colors.appPurple[4] }}
-                                >
-                                    {movie.original_title}
-                                </Title>
+                                {width < 1200
+                                    ? <Flex justify='space-between'>
+                                        <Title
+                                            className={cls.movieTitle}
+                                            style={{ color: theme.colors.appPurple[4] }}
+                                        >
+                                            {movie.original_title}
+                                        </Title>
+                                        <RateButton
+                                            movie={{ id: movie.id }}
+                                            readOnly
+                                        />
+                                    </Flex>
+                                    : <Title
+                                        className={cls.movieTitle}
+                                        style={{ color: theme.colors.appPurple[4] }}
+                                    >
+                                        {movie.original_title}
+                                    </Title>
+                                }
                                 <p
                                     className={cls.releaseDate}
                                     style={{ color: theme.colors.appGrey[4] }}
@@ -73,17 +100,17 @@ export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
                         </Flex>
 
                         <div className={cls.additionalDataGrid}>
-                            {additionalData.map(item =>
-                                <AdditionalDataItem key={item.header} {...item} />
-                            )
-                            }
+                            {additionalData
+                                .map(item =>
+                                    <AdditionalDataItem key={item.header} {...item} />
+                                )}
                         </div>
                     </Flex>
                 </Flex>
-                <RateButton
+                {width > 1200 && <RateButton
                     movie={{ id: movie.id }}
                     readOnly
-                />
+                />}
             </Flex>
         </Card>
     )

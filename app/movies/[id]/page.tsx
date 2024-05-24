@@ -43,9 +43,6 @@ export default async function MoviePage({
             {movie &&
                 <Flex
                     direction='column'
-                    style={{
-                        padding: '40px 180px'
-                    }}
                     className={cls.moviePage}
                     gap={20}
                 >

@@ -75,3 +75,17 @@
         text-decoration: underline;
     }
 }
+
+@media(max-width: 500px) {
+    .modal {
+        :global {
+            .mantine-Modal-header {
+                width: 90vw;
+            }
+        }
+    }
+
+    .wrapper {
+        padding: 0 5px 10px;
+    }
+}

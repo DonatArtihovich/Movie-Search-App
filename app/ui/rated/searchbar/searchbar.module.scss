@@ -52,3 +52,9 @@
         width: 60vw;
     }
 }
+
+@media(max-width: 500px) {
+    .wrapper {
+        width: 95vw;
+    }
+}

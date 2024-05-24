@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import cls from './movies.module.scss'
+import { Logo } from "@/app/ui/logo";
 
 export default function NotFound() {
     const { replace } = useRouter()
@@ -14,24 +15,25 @@ export default function NotFound() {
     }, [])
 
     return (
-        <Flex
-            direction='column'
-            align='center'
-            justify='center'
+        <div
             style={{
-                minHeight: '100vh'
+                minHeight: '100vh',
+                padding: 24
             }}
         >
+            <Logo />
             <Flex
                 direction='column'
                 align='center'
                 gap={48}
+                className={cls.notFoundFlex}
             >
                 <Image
                     src='/not-found.png'
                     alt='Page not found'
                     width={656}
                     height={195}
+                    className={cls.notFoundImage}
                 />
                 <Flex
                     direction='column'
@@ -42,6 +44,6 @@ export default function NotFound() {
                     <Button className={cls.notFoundButton}>Go Home</Button>
                 </Flex>
             </Flex>
-        </Flex>
+        </div>
     )
 }

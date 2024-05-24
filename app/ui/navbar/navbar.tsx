@@ -2,13 +2,12 @@
 
 import { classNames } from '@/app/lib/class-names';
 import cls from './navbar.module.scss'
-import { Flex, Menu, Text, Title, useMantineTheme } from "@mantine/core";
+import { Flex, Menu, Text, useMantineTheme } from "@mantine/core";
 import { Url } from "next/dist/shared/lib/router/router";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import useWindowSize from '@/app/lib/hooks/use-window-size';
+import { Logo } from '../logo';
 
 interface MenuItem {
     label: string;
@@ -27,7 +26,6 @@ type NavbarProps = {
 
 export function Navbar({ opened }: NavbarProps) {
     const pathname = usePathname();
-    const { width } = useWindowSize();
     const [selected, setSelected] = useState<MenuItem['key']>(
         pathname
             .endsWith('rated')
@@ -45,28 +43,7 @@ export function Navbar({ opened }: NavbarProps) {
                 direction='column'
                 bg={theme.colors.appPurple[0]}
             >
-                <Flex
-                    gap={12}
-                    className={cls.logoWrapper}
-                >
-                    {width > 700 &&
-                        <Image
-                            src='/logo.svg'
-                            width={32}
-                            height={32}
-                            alt='Logo'
-                        />
-                    }
-                    <Title
-                        order={2}
-                        className={cls.logoTitle}
-                        component='h2'
-                        c={theme.colors.appPurple[4]}
-                    >
-                        ArrowFlicks
-                    </Title>
-                </Flex>
-
+                <Logo />
                 <ul
                     className={cls.buttonsMenu}
                 >

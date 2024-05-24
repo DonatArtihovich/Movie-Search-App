@@ -5,7 +5,7 @@ export default function Loading() {
         <Flex
             style={{
                 minWidth: '100%',
-                minHeight: '100%'
+                minHeight: '100vh'
             }}
 
             align='center'

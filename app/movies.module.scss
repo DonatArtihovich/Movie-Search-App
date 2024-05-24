@@ -27,3 +27,31 @@
     font-weight: 600;
     font-size: 20px;
 }
+
+.notFoundFlex {
+    position: absolute;
+    top: 30%;
+    left: 20%
+}
+
+@media(max-width: 950px) {
+    .notFoundImage {
+        width: 60vw;
+        height: auto;
+    }
+
+    .notFoundImage {
+        width: 80vw;
+        height: auto;
+    }
+
+    .notFoundText {
+        font-size: 16px;
+        max-width: 80vw;
+        text-align: center;
+    }
+
+    .notFoundFlex {
+        left: 10%;
+    }
+}

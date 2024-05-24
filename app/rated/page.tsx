@@ -74,7 +74,7 @@ export default function Rated() {
                             minWidth: '80%'
                         }}
                     >
-                        <Title order={1}>
+                        <Title order={1} className={cls.pageTitle}>
                             Rated movies
                         </Title>
                         <Searchbar

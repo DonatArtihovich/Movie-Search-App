@@ -10,17 +10,6 @@
     align-items: start;
 }
 
-.logoWrapper {
-    margin-bottom: 80px;
-}
-
-.logoTitle {
-    font-family: var(--second-family);
-    font-weight: 600;
-    font-size: 24px;
-    letter-spacing: -0.02em;
-}
-
 .buttonsMenu {
     display: flex;
     flex-direction: column;
@@ -59,18 +48,9 @@
     .menuLinkWrapper {
         width: 150px;
     }
-
-    .logoTitle {
-        font-size: 20px;
-    }
 }
 
 @media(max-width: 700px) {
-
-    .logoTitle {
-        font-size: 24px;
-    }
-
     .navbar {
         position: absolute;
         top: 0;
