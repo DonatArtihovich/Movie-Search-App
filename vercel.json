@@ -5,5 +5,20 @@
             "src": "/(.*)",
             "dest": "/"
         }
-    ]
+    ],
+    "builds": [
+    {
+      "src": "pages//*",
+      "use": "@vercel/node",
+      "config": {
+        "env": {
+          "NODE_ENV": "production"
+        }
+      }
+    },
+    {
+      "src": "app//*",
+      "use": "@vercel/static-build"
+    }
+  ]
 }
