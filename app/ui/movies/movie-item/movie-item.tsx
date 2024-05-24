@@ -31,7 +31,7 @@ export function MovieItem({ movie, genres }: MovieItemProps) {
                         />
                         <Flex direction='column' justify='space-between' style={{ minHeight: '170px', maxWidth: '263px' }} >
                             <Flex direction='column' gap={8}>
-                                {width < 1250 && width > 980
+                                {width < 1250 && width > 980 || width <= 700
                                     ? <Flex align='center' justify='space-between'>
                                         <Link
                                             className={cls.movieTitle}
@@ -95,7 +95,7 @@ export function MovieItem({ movie, genres }: MovieItemProps) {
                             </Flex>
                         </Flex>
                     </Flex>
-                    {(width >= 1250 || width <= 980) &&
+                    {(width >= 1250 || width <= 980 && width > 700) &&
                         <RateButton
                             movie={movie}
                             className={cls.rateButton}

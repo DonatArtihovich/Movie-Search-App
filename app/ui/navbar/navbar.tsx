@@ -21,7 +21,11 @@ const menuItems: MenuItem[] = [
     { label: 'Rated Movies', key: 'rated', href: '/rated' }
 ]
 
-export function Navbar() {
+type NavbarProps = {
+    opened: boolean;
+}
+
+export function Navbar({ opened }: NavbarProps) {
     const pathname = usePathname();
     const { width } = useWindowSize();
     const [selected, setSelected] = useState<MenuItem['key']>(
@@ -34,36 +38,30 @@ export function Navbar() {
 
     return (
         <nav
-            className={cls.navbar}
+            className={classNames(cls.navbar, opened && cls.navbarOpened)}
         >
             <Flex
                 className={cls.navbarWrapper}
                 direction='column'
                 bg={theme.colors.appPurple[0]}
-                align='start'
-                style={{
-                    width: width < 800 ? '30vw' : ''
-                }}
-            // w={width < 800}
             >
                 <Flex
                     gap={12}
                     className={cls.logoWrapper}
                 >
-                    <Image
-                        src='/logo.svg'
-                        width={32}
-                        height={32}
-                        alt='Logo'
-                    />
+                    {width > 700 &&
+                        <Image
+                            src='/logo.svg'
+                            width={32}
+                            height={32}
+                            alt='Logo'
+                        />
+                    }
                     <Title
                         order={2}
                         className={cls.logoTitle}
                         component='h2'
                         c={theme.colors.appPurple[4]}
-                        style={{
-                            fontSize: width < 800 ? '20px' : ''
-                        }}
                     >
                         ArrowFlicks
                     </Title>

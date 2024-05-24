@@ -7,6 +7,7 @@
 .navbarWrapper {
     height: 100%;
     padding: 1.5rem;
+    align-items: start;
 }
 
 .logoWrapper {
@@ -49,11 +50,70 @@
 }
 
 @media(max-width: 800px) {
-    .navbar {
+
+    .navbar,
+    .navbarWrapper {
         width: 30vw;
     }
 
     .menuLinkWrapper {
         width: 150px;
+    }
+
+    .logoTitle {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 700px) {
+
+    .logoTitle {
+        font-size: 24px;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 900;
+        left: -70vw;
+    }
+
+    .navbar,
+    .navbarWrapper {
+        width: 70vw;
+    }
+
+    .navbarWrapper {
+        padding-top: 45px;
+        align-items: center;
+    }
+
+    .menuLinkWrapper {
+        width: 200px;
+    }
+
+    .navbarOpened {
+        left: 0;
+        animation: 1s navbarOpen ease-out;
+        -webkit-animation: 1s navbarOpen ease-out;
+    }
+}
+
+@keyframes navbarOpen {
+    from {
+        transform: translateX(-70vw);
+        -webkit-transform: translateX(-70vw);
+        -moz-transform: translateX(-70vw);
+        -ms-transform: translateX(-70vw);
+        -o-transform: translateX(-70vw);
+    }
+
+    to {
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
     }
 }

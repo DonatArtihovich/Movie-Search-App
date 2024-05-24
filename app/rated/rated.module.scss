@@ -29,3 +29,10 @@
         background: var(--purple-main-500);
     }
 }
+
+@media(max-width: 980px) {
+    .headerWrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

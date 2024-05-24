@@ -4,6 +4,7 @@ import "@/app/globals.scss";
 import "@mantine/core/styles.css"
 import { Flex, MantineProvider } from "@mantine/core";
 import { Navbar } from "@/app/ui/navbar";
+import { MainContent } from "./ui/main-content";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <head>
@@ -31,18 +33,9 @@ export default function RootLayout({
             }
           }}
         >
-          <Flex max-w={'100vw'} min-h={'100vh'} justify='center'>
-            <Navbar />
-            <main
-              className={inter.className}
-              style={{
-                width: '100%',
-                backgroundColor: 'var(--grey-200)'
-              }}
-            >
-              {children}
-            </main>
-          </Flex>
+          <MainContent className={inter.className}>
+            {children}
+          </MainContent>
         </MantineProvider>
       </body>
     </html>

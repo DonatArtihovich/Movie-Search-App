@@ -1,4 +1,4 @@
-import { Flex, Title } from "@mantine/core";
+import { Burger, Flex, Title } from "@mantine/core";
 import { MoviesForm } from "@/app/ui/movies/form";
 import cls from './movies.module.scss'
 import { MoviesList } from "@/app/ui/movies/movies-list";
@@ -28,12 +28,15 @@ export default async function Home({
       className={cls.wrapper}
       bg='var(--grey-200)'
     >
-      <Title
-        order={1}
-        className={cls.moviesTitle}
-      >
-        Movies
-      </Title>
+      <Flex>
+        <Title
+          order={1}
+          className={cls.moviesTitle}
+        >
+          Movies
+        </Title>
+      </Flex>
+
       <MoviesForm genres={genres} />
       {movies?.results.length ?
         <Flex direction='column'>
