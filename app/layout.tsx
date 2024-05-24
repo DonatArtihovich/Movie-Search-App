@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.scss";
+import "@/app/globals.scss";
 import "@mantine/core/styles.css"
-import { Flex, MantineProvider, useMantineTheme } from "@mantine/core";
+import { Flex, MantineProvider } from "@mantine/core";
 import { Navbar } from "@/app/ui/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,7 +17,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <head>

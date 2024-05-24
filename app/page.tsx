@@ -1,10 +1,10 @@
 import { Flex, Title } from "@mantine/core";
-import { MoviesForm } from "./ui/movies/form";
+import { MoviesForm } from "@/app/ui/movies/form";
 import cls from './movies.module.scss'
-import { MoviesList } from "./ui/movies/movies-list";
-import { NoMoviesResult } from "./ui/movies/no-movies/no-movies";
-import { Pagination } from "./ui/movies/pagination";
-import { fetchGenres, getMovies } from "./lib/actions";
+import { MoviesList } from "@/app/ui/movies/movies-list";
+import { NoMoviesResult } from "@/app/ui/movies/no-movies";
+import { Pagination } from "@/app/ui/movies/pagination";
+import { fetchGenres, getMovies } from "@/app/lib/actions";
 
 export default async function Home({
   searchParams

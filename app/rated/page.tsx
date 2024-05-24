@@ -9,13 +9,14 @@ import cls from './rated.module.scss'
 import { Searchbar } from "@/app/ui/rated/searchbar";
 import Image from "next/image";
 import Link from "next/link";
-import { fetchGenres } from "../lib/actions";
+import { fetchGenres } from "@/app/lib/actions";
 
 export default function Rated() {
     const [movies, setMovies] = useState<RatedMovie[]>([]);
     const [page, setPage] = useState<number>(1);
     const [searchString, setSearchString] = useState<string>('');
     const [genres, setGenres] = useState<Genre[]>([]);
+    const [searched, setSearched] = useState<boolean>(false);
 
     const moviesOnPage = 4;
 
@@ -27,7 +28,6 @@ export default function Rated() {
             const { genres } = await fetchGenres();
             setGenres(genres);
         })
-
     }, []);
 
     const searchMovies = () => {
@@ -36,19 +36,20 @@ export default function Rated() {
             console.log(moviesRatings);
             if (moviesRatings) setMovies(moviesRatings);
 
-            return;
+            return
         }
 
-        setMovies(
-            movies
-                .filter(m =>
-                    m.original_title
-                        .toLowerCase()
-                        .includes(
-                            searchString
-                                .toLowerCase()
-                        )
-                )
+        setSearched(true);
+
+        setMovies(movies
+            .filter(m =>
+                m.original_title
+                    .toLowerCase()
+                    .includes(
+                        searchString
+                            .toLowerCase()
+                    )
+            )
         )
     }
 
@@ -57,14 +58,17 @@ export default function Rated() {
             direction='column'
             gap={40}
             className={cls.wrapper}
-            align={!movies.length ? 'center' : 'normal'}
-            justify={!movies.length ? 'center' : 'normal'}
+            align={(!movies.length && !searched) ? 'center' : 'normal'}
+            justify={(!movies.length && !searched) ? 'center' : 'normal'}
         >
-            {movies.length ?
+            {movies.length || searched ?
                 <>
                     <Flex
                         align='center'
                         justify='space-between'
+                        style={{
+                            minWidth: '80%'
+                        }}
                     >
                         <Title order={1}>
                             Rated movies

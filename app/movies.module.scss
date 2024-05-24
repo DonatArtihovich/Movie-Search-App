@@ -13,3 +13,17 @@
     line-height: 140%;
     color: black;
 }
+
+.notFoundButton {
+    border-radius: 8px;
+    padding: 10px 20px;
+    width: 103px;
+    height: 40px;
+    background: var(--purple-main-500);
+}
+
+.notFoundText {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 20px;
+}

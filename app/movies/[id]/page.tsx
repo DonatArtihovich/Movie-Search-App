@@ -1,25 +1,26 @@
-'use client'
 import cls from './movie-page.module.scss'
 import { getMovie } from "@/app/lib/actions";
-import { getMoneyString, getTimeString, months } from '@/app/lib/const';
 import { AdditionalMovieInfoCard } from '@/app/ui/movie/additional-info-card';
 import { MainMovieInfoCard } from '@/app/ui/movie/main-info-card';
-import { Flex, Breadcrumbs, Card, Title, useMantineTheme, Button, Table, Loader, Grid } from "@mantine/core";
-import Image from 'next/image';
+import { Flex, Breadcrumbs, Loader } from "@mantine/core";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
 
-export default function MoviePage({
+export default async function MoviePage({
     params
 }: {
     params: {
         id: string;
     }
 }) {
-    const [movie, setMovie] = useState<MovieType | null>();
+    const movie = await getMovie(params.id);
 
-    const items = useMemo(() => ([
+    console.log(movie);
+    if (!movie) {
+        notFound();
+    }
+
+    const items = [
         { title: 'Movies', href: '/' },
         { title: movie?.original_title, href: '#' }
     ]
@@ -31,21 +32,7 @@ export default function MoviePage({
             >
                 {item.title}
             </Link>
-        ))), [movie])
-
-    useEffect(() => {
-        new Promise(async () => {
-            const movie = await getMovie(params.id);
-
-            console.log(movie);
-            if (!movie) {
-                notFound();
-            }
-
-            setMovie(movie);
-        })
-
-    }, [])
+        ))
 
     if (!movie) {
         return <Loader />;

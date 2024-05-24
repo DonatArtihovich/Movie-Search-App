@@ -1,4 +1,6 @@
-import { Card, Divider, Flex, List, Title } from '@mantine/core';
+'use client';
+
+import { Card, Divider, Flex, List, ListItemProps, Title } from '@mantine/core';
 import cls from './additional-movie-info.module.scss'
 import Image from 'next/image';
 
