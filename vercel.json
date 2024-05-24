@@ -1,15 +1,20 @@
 {
-    "framework": "nextjs",
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
-    ],
-    "builds": [
+  "version": 2,
+  "builds": [
     {
-      "src": "app//*",
+      "src": "package.json",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "app/**/*",
       "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    {
+      "src": "/(.*)",
+      "dest": "/app/$1"
     }
   ]
 }
