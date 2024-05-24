@@ -8,8 +8,8 @@ export function NoMoviesResult() {
         }}>
             <Image
                 src='/no-movies.svg'
-                width={'312px'}
-                height={'253px'}
+                width={312}
+                height={253}
                 alt='No movies found'
                 className={cls.image}
             />
