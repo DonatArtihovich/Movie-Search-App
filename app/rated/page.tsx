@@ -10,7 +10,8 @@ import { Searchbar } from "@/app/ui/rated/searchbar";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchGenres } from "@/app/lib/actions";
-import useWindowSize from "../lib/hooks/use-window-size";
+import { useWindowWidth } from "@react-hook/window-size";
+// import useWindowSize from "../lib/hooks/use-window-size";
 
 export default function Rated() {
     const [movies, setMovies] = useState<RatedMovie[]>([]);
@@ -18,7 +19,7 @@ export default function Rated() {
     const [searchString, setSearchString] = useState<string>('');
     const [genres, setGenres] = useState<Genre[]>([]);
     const [searched, setSearched] = useState<boolean>(false);
-    const { width } = useWindowSize();
+    const width = useWindowWidth();
 
     const moviesOnPage = 4;
 
