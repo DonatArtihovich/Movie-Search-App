@@ -8,16 +8,7 @@
     ],
     "builds": [
     {
-      "src": "pages//*",
-      "use": "@vercel/node",
-      "config": {
-        "env": {
-          "NODE_ENV": "production"
-        }
-      }
-    },
-    {
-      "src": "app//*",
+      "src": "/(.*)",
       "use": "@vercel/static-build"
     }
   ]
