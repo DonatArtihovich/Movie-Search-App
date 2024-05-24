@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import { classNames } from '@/app/lib/class-names';
 import cls from './navbar.module.scss'
 import { Flex, Menu, Text, Title, useMantineTheme } from "@mantine/core";
@@ -7,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import useWindowSize from '@/app/lib/hooks/use-window-size';
 
 interface MenuItem {
     label: string;
@@ -21,6 +23,7 @@ const menuItems: MenuItem[] = [
 
 export function Navbar() {
     const pathname = usePathname();
+    const { width } = useWindowSize();
     const [selected, setSelected] = useState<MenuItem['key']>(
         pathname
             .endsWith('rated')
@@ -30,13 +33,18 @@ export function Navbar() {
     const theme = useMantineTheme();
 
     return (
-        <nav className={cls.navbar}>
+        <nav
+            className={cls.navbar}
+        >
             <Flex
                 className={cls.navbarWrapper}
-                w={280}
                 direction='column'
                 bg={theme.colors.appPurple[0]}
                 align='start'
+                style={{
+                    width: width < 800 ? '30vw' : ''
+                }}
+            // w={width < 800}
             >
                 <Flex
                     gap={12}
@@ -53,6 +61,9 @@ export function Navbar() {
                         className={cls.logoTitle}
                         component='h2'
                         c={theme.colors.appPurple[4]}
+                        style={{
+                            fontSize: width < 800 ? '20px' : ''
+                        }}
                     >
                         ArrowFlicks
                     </Title>
@@ -68,8 +79,6 @@ export function Navbar() {
                                 defaultChecked={item.key === 'movies'}
                                 className={classNames(cls.menuLinkWrapper, selected === item.key && cls.checked)}
                                 bg={selected === item.key ? theme.colors.appPurple[1] : 'transparent'}
-                                w={232}
-                                h={42}
                                 onClick={() => setSelected(item.key)}
                                 component={Link}
                                 href={item.href}

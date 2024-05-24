@@ -1,5 +1,5 @@
 .navbar {
-    width: 280px;
+    // width: 280px;
     min-height: 100vh;
     flex-basis: 280px;
 }
@@ -31,6 +31,8 @@
     border-radius: 8px;
     padding: 10px;
     box-sizing: border-box;
+    width: 232px;
+    height: 42px;
 }
 
 .menuLink {
@@ -44,4 +46,14 @@
 
 .checked a {
     font-weight: 700;
+}
+
+@media(max-width: 800px) {
+    .navbar {
+        width: 30vw;
+    }
+
+    .menuLinkWrapper {
+        width: 150px;
+    }
 }

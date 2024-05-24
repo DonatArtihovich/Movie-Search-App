@@ -19,6 +19,8 @@ export function RateModal({ opened, onClose, movie }: RateModalProps) {
 
     const removeRating = () => {
         removeMovieRating(movie.id);
+        setValue(0);
+        onClose();
     }
 
     return (

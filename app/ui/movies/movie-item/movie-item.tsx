@@ -5,6 +5,7 @@ import cls from './movie-item.module.scss'
 import Image from 'next/image';
 import Link from 'next/link';
 import { RateButton } from '../rate-button';
+import useWindowSize from '@/app/lib/hooks/use-window-size';
 
 type MovieItemProps = {
     movie: Movie;
@@ -13,6 +14,7 @@ type MovieItemProps = {
 
 export function MovieItem({ movie, genres }: MovieItemProps) {
     const theme = useMantineTheme();
+    const { width } = useWindowSize();
 
     console.log(movie.genre_ids.map(genreId => genres.find(({ id }) => genreId === Number(id))?.name));
 
@@ -29,13 +31,29 @@ export function MovieItem({ movie, genres }: MovieItemProps) {
                         />
                         <Flex direction='column' justify='space-between' style={{ minHeight: '170px', maxWidth: '263px' }} >
                             <Flex direction='column' gap={8}>
-                                <Link
-                                    className={cls.movieTitle}
-                                    style={{ color: theme.colors.appPurple[4] }}
-                                    href={`/movies/${movie.id}`}
-                                >
-                                    {movie.original_title}
-                                </Link>
+                                {width < 1250 && width > 980
+                                    ? <Flex align='center' justify='space-between'>
+                                        <Link
+                                            className={cls.movieTitle}
+                                            style={{
+                                                color: theme.colors.appPurple[4],
+                                                maxWidth: '70%'
+                                            }}
+                                            href={`/movies/${movie.id}`}
+                                        >
+                                            {movie.original_title}
+                                        </Link>
+                                        <RateButton movie={movie} />
+                                    </Flex>
+
+                                    : <Link
+                                        className={cls.movieTitle}
+                                        style={{ color: theme.colors.appPurple[4] }}
+                                        href={`/movies/${movie.id}`}
+                                    >
+                                        {movie.original_title}
+                                    </Link>
+                                }
                                 <p
                                     className={cls.releaseDate}
                                     style={{ color: theme.colors.appGrey[4] }}
@@ -77,11 +95,14 @@ export function MovieItem({ movie, genres }: MovieItemProps) {
                             </Flex>
                         </Flex>
                     </Flex>
-                    <RateButton
-                        movie={movie}
-                    />
+                    {(width >= 1250 || width <= 980) &&
+                        <RateButton
+                            movie={movie}
+                            className={cls.rateButton}
+                        />
+                    }
                 </Flex>
             </Card>
-        </li>
+        </li >
     )
 }

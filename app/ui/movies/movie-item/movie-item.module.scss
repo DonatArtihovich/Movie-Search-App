@@ -1,5 +1,6 @@
 .MovieItem {
     list-style: none;
+    position: relative;
 
     p {
         margin: 0;
@@ -46,12 +47,29 @@
     font-size: 16px;
 }
 
-.starButton {
-    background: transparent;
-    border: none;
+@media (max-width: 1400px) {
+    .MovieItemCard {
+        width: 32vw;
+    }
+}
 
-    &:active,
-    &:hover {
-        background: transparent;
+@media (max-width: 1250px) {
+    .MovieItemCard {
+        width: 300px;
+        height: auto;
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .movieTitle {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 980px) {
+    .MovieItemCard {
+        width: 50vw;
     }
 }

@@ -45,7 +45,7 @@ export function MoviesForm({ genres }: { genres: Genre[] }) {
     return (
         <form className={cls.form} onChange={handleChange}>
             <Flex direction='column' gap={24}>
-                <Flex align='center' w='100%' gap={16}>
+                <Flex align='center' w='100%' gap={16} className={cls.mainInputsWrapper}>
                     <NativeSelect
                         rightSection={<IconChevronDown style={{ width: px(25), height: px(24) }} />}
                         label="Genres"

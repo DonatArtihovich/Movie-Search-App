@@ -31,12 +31,12 @@ export default function RootLayout({
             }
           }}
         >
-          <Flex max-w={'100vw'} min-h={'100vh'}>
+          <Flex max-w={'100vw'} min-h={'100vh'} justify='center'>
             <Navbar />
             <main
               className={inter.className}
               style={{
-                width: 'calc(100vw - 280px)',
+                width: '100%',
                 backgroundColor: 'var(--grey-200)'
               }}
             >

@@ -11,7 +11,7 @@ export function MoviesList({ movies, genres }: MoviesListProps) {
 
     return (
         <ul className={cls.moviesList}>
-            <Flex wrap={'wrap'} gap={16}>
+            <Flex wrap={'wrap'} gap={16} justify='center'>
                 {movies.map(movie => (
                     <MovieItem key={movie.id} movie={movie} genres={genres} />
                 ))}

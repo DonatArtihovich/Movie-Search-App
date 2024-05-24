@@ -6,13 +6,15 @@ import Image from "next/image";
 import { useState } from 'react';
 import { RateModal } from '../rate-modal';
 import { getMoviesRatings } from '@/app/lib/rating';
+import { classNames } from '@/app/lib/class-names';
 
 type RateButtonProps = {
     movie: Movie | { id: number };
     readOnly?: boolean;
+    className?: string
 }
 
-export function RateButton({ movie, readOnly }: RateButtonProps) {
+export function RateButton({ movie, readOnly, className }: RateButtonProps) {
     const [modalOpened, setModalOpened] = useState<boolean>(false);
 
     const movieRating = getMoviesRatings()?.find(m => m.id === movie.id)?.rating ?? 0;
@@ -20,7 +22,7 @@ export function RateButton({ movie, readOnly }: RateButtonProps) {
     return (
         <>
             <Button
-                className={cls.rateButton}
+                className={classNames(cls.rateButton, className)}
                 onClick={() => !readOnly && setModalOpened(!modalOpened)}
                 disabled={readOnly}
             >

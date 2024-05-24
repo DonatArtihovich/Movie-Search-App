@@ -18,9 +18,7 @@ export default async function Home({
     page: number
   }
 }) {
-  const movies = await getMovies({
-    ...searchParams
-  });
+  const movies = await getMovies({ ...searchParams });
 
   const genres: Genre[] = (await fetchGenres()).genres;
 
@@ -37,7 +35,7 @@ export default async function Home({
         Movies
       </Title>
       <MoviesForm genres={genres} />
-      {movies && movies.results.length > 0 ?
+      {movies?.results.length ?
         <Flex direction='column'>
           <MoviesList movies={movies.results} genres={genres} />
           <Pagination
