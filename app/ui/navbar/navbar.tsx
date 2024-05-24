@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Logo } from '../logo';
+import { useWindowWidth } from '@react-hook/window-size';
 
 interface MenuItem {
     label: string;
@@ -33,6 +34,7 @@ export function Navbar({ opened }: NavbarProps) {
             : menuItems[0].key
     );
     const theme = useMantineTheme();
+    const width = useWindowWidth();
 
     return (
         <nav
@@ -57,6 +59,7 @@ export function Navbar({ opened }: NavbarProps) {
                                 onClick={() => setSelected(item.key)}
                                 component={Link}
                                 href={item.href}
+                                w={width > 88 ? 232 : undefined}
                             >
                                 <Text
                                     className={cls.menuLink}
@@ -66,10 +69,6 @@ export function Navbar({ opened }: NavbarProps) {
                         ))}
                     </Menu>
                 </ul>
-                {/* <Flex>
-                    <Button>Movies</Button>
-                    <Button>Rated Movies</Button>
-                </Flex> */}
             </Flex>
         </nav >
     )

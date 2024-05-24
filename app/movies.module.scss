@@ -31,7 +31,19 @@
 .notFoundFlex {
     position: absolute;
     top: 30%;
-    left: 20%
+    left: 40%
+}
+
+@media(max-width: 2000px) {
+    .notFoundFlex {
+        left: 35%
+    }
+}
+
+@media(max-width: 1440px) {
+    .notFoundFlex {
+        left: 25%
+    }
 }
 
 @media(max-width: 950px) {
