@@ -11,9 +11,6 @@
             padding-top: 4px;
             color: var(--grey-500);
         }
-
-        // align-items: center;
-        // justify-content: center;
     }
 }
 
@@ -64,6 +61,11 @@
     align-self: flex-end;
     margin-bottom: 12px;
     padding: 0;
+
+    &:hover,
+    &:active {
+        background-color: transparent;
+    }
 }
 
 .mostPopularInput {
@@ -89,13 +91,6 @@
         margin-bottom: 8px;
     }
 }
-
-// .defaultOption {
-//     font-family: var(--font-family);
-//     font-weight: 400;
-//     font-size: 14px;
-//     line-height: 143%;
-// }
 
 @media(max-width: 1445px) {
 
