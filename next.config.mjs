@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import path from 'node:path'
+
 const nextConfig = {
     images: {
         domains: ['image.tmdb.org'],
