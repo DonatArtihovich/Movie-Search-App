@@ -1,11 +1,12 @@
 'use client'
 import { classNames } from '@/app/lib/class-names';
 import cls from './navbar.module.scss'
-import { AppShell, Button, Flex, Menu, MenuItemProps, Title, useMantineTheme } from "@mantine/core";
+import { Flex, Menu, Text, Title, useMantineTheme } from "@mantine/core";
 import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface MenuItem {
     label: string;
@@ -19,13 +20,17 @@ const menuItems: MenuItem[] = [
 ]
 
 export function Navbar() {
-    const [checked, setChecked] = useState<string>(menuItems[0].key);
+    const pathname = usePathname();
+    const [selected, setSelected] = useState<MenuItem['key']>(
+        pathname
+            .endsWith('rated')
+            ? menuItems[1].key
+            : menuItems[0].key
+    );
     const theme = useMantineTheme();
 
     return (
-        <nav
-            className={cls.navbar}
-        >
+        <nav className={cls.navbar}>
             <Flex
                 className={cls.navbarWrapper}
                 w={280}
@@ -61,17 +66,18 @@ export function Navbar() {
                             <Menu.Item
                                 key={item.key}
                                 defaultChecked={item.key === 'movies'}
-                                className={classNames(cls.menuLinkWrapper, checked === item.key && cls.checked)}
-                                bg={checked === item.key ? theme.colors.appPurple[1] : 'transparent'}
+                                className={classNames(cls.menuLinkWrapper, selected === item.key && cls.checked)}
+                                bg={selected === item.key ? theme.colors.appPurple[1] : 'transparent'}
                                 w={232}
                                 h={42}
-                                onClick={() => setChecked(item.key)}
+                                onClick={() => setSelected(item.key)}
+                                component={Link}
+                                href={item.href}
                             >
-                                <Link
-                                    href={item.href}
+                                <Text
                                     className={cls.menuLink}
-                                    style={{ color: checked === item.key ? theme.colors.appPurple[4] : 'black' }}
-                                >{item.label}</Link>
+                                    style={{ color: selected === item.key ? theme.colors.appPurple[4] : 'black' }}
+                                >{item.label}</Text>
                             </Menu.Item>
                         ))}
                     </Menu>

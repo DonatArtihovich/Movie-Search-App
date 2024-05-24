@@ -28,16 +28,12 @@
 }
 
 .menuLinkWrapper {
-    // "rounded-lg px-4 py-2 w-92 h-16 box-border"
     border-radius: 8px;
     padding: 10px;
-    // width: 232px;
-    // height: 42px;
     box-sizing: border-box;
 }
 
 .menuLink {
-    // "text-base leading-7 m-0"
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
