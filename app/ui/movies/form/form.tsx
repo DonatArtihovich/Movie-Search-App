@@ -1,44 +1,29 @@
 'use client'
 
-import { Button, Flex, NativeSelect, NumberInput, Title, px, useMantineTheme } from "@mantine/core";
+import { Button, Flex, NativeSelect, NumberInput, Title, px } from "@mantine/core";
 import cls from './form.module.scss'
 import { IconChevronDown } from "@tabler/icons-react";
-import { fetchGenres, getMovies } from "@/app/lib/actions";
 import { useForm } from "@mantine/form";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
-type MoviesFormProps = {
-    setMovies: (movieResults: MovieResults | null) => void;
-    page: number;
-    setPage: (page: number) => void;
-}
-
-export function MoviesForm({ setMovies, page, setPage }: MoviesFormProps) {
-    const [genres, setGenres] = useState<Genre[]>([])
-
-    useEffect(() => {
-        new Promise(async () => {
-            const genres: Genre[] = (await fetchGenres()).genres;
-            setGenres(genres)
-        })
-    }, [])
+export function MoviesForm({ genres }: { genres: Genre[] }) {
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const { replace } = useRouter();
+    const page = searchParams.get('page') || 1;
 
     useEffect(() => {
         new Promise(async () => {
             const values = form.getValues();
 
-            const movies = await getMovies({
-                ...values as {
-                    genre: Genre['name'],
-                    year: number,
-                    sort: string,
-                    ratingFrom: number,
-                    ratingTo: number,
-                },
-                page
-            });
+            const newSearchParams = new URLSearchParams(searchParams);
 
-            setMovies(movies);
+            for (const key in { ...values, page }) {
+                newSearchParams.set(key, String({ ...values, page }[key]));
+            }
+
+            replace(`${pathname}?${newSearchParams.toString()}`)
         })
 
     }, [page])
@@ -48,20 +33,13 @@ export function MoviesForm({ setMovies, page, setPage }: MoviesFormProps) {
     })
 
     const handleChange = form.onSubmit(async (values) => {
-        setPage(1);
+        const newSearchParams = new URLSearchParams(searchParams);
 
-        const movies = await getMovies({
-            ...values as {
-                genre: Genre['name'],
-                year: number,
-                sort: string,
-                ratingFrom: number,
-                ratingTo: number,
-            },
-            page
-        });
+        for (const key in { ...values, page: 1 }) {
+            newSearchParams.set(key, String({ ...values, page: 1 }[key]));
+        }
 
-        setMovies(movies);
+        replace(`${pathname}?${newSearchParams.toString()}`)
     })
 
     return (

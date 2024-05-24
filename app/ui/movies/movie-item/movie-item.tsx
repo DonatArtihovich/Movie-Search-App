@@ -8,10 +8,13 @@ import { RateButton } from '../rate-button';
 
 type MovieItemProps = {
     movie: Movie;
+    genres: Genre[];
 }
 
-export function MovieItem({ movie }: MovieItemProps) {
+export function MovieItem({ movie, genres }: MovieItemProps) {
     const theme = useMantineTheme();
+
+    console.log(movie.genre_ids.map(genreId => genres.find(({ id }) => genreId === Number(id))?.name));
 
     return (
         <li className={cls.MovieItem}>
@@ -65,7 +68,12 @@ export function MovieItem({ movie }: MovieItemProps) {
                                 >
                                     Genres
                                 </p>
-                                <p className={cls.genresList}>{movie.genre_ids.join(', ')}</p>
+                                <p className={cls.genresList}>{movie.genre_ids.map(genreId =>
+                                    genres
+                                        .find(({ id }) => genreId === Number(id))
+                                        ?.name
+                                )
+                                    .join(', ')}</p>
                             </Flex>
                         </Flex>
                     </Flex>

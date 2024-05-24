@@ -16,7 +16,6 @@ export function RateButton({ movie, readOnly }: RateButtonProps) {
     const [modalOpened, setModalOpened] = useState<boolean>(false);
 
     const movieRating = getMoviesRatings()?.find(m => m.id === movie.id)?.rating ?? 0;
-    console.log(movieRating);
 
     return (
         <>

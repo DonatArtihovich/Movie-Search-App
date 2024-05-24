@@ -1,20 +1,28 @@
-'use client'
-
 import { Flex, Title } from "@mantine/core";
 import { MoviesForm } from "./ui/movies/form";
 import cls from './movies.module.scss'
-import { useEffect, useState } from "react";
 import { MoviesList } from "./ui/movies/movies-list";
 import { NoMoviesResult } from "./ui/movies/no-movies/no-movies";
 import { Pagination } from "./ui/movies/pagination";
+import { fetchGenres, getMovies } from "./lib/actions";
 
-export default function Home() {
-  const [movies, setMovies] = useState<null | MovieResults>(null);
-  const [activePage, setActivePage] = useState<number>(1)
+export default async function Home({
+  searchParams
+}: {
+  searchParams: {
+    genre: Genre['name'],
+    year: number,
+    sort: string,
+    ratingFrom: number,
+    ratingTo: number,
+    page: number
+  }
+}) {
+  const movies = await getMovies({
+    ...searchParams
+  });
 
-  useEffect(() => {
-    console.log(movies);
-  }, [movies])
+  const genres: Genre[] = (await fetchGenres()).genres;
 
   return (
     <Flex
@@ -28,18 +36,12 @@ export default function Home() {
       >
         Movies
       </Title>
-      <MoviesForm
-        setMovies={setMovies}
-        page={activePage}
-        setPage={setActivePage}
-      />
+      <MoviesForm genres={genres} />
       {movies && movies.results.length > 0 ?
         <Flex direction='column'>
-          <MoviesList movies={movies.results} />
+          <MoviesList movies={movies.results} genres={genres} />
           <Pagination
             total={movies.total_pages}
-            value={activePage}
-            onChange={setActivePage}
           />
         </Flex>
         : <NoMoviesResult />

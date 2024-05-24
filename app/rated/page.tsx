@@ -7,20 +7,27 @@ import { MoviesList } from "@/app/ui/movies/movies-list";
 import { Pagination } from "@/app/ui/movies/pagination";
 import cls from './rated.module.scss'
 import { Searchbar } from "@/app/ui/rated/searchbar";
-import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { fetchGenres } from "../lib/actions";
 
 export default function Rated() {
     const [movies, setMovies] = useState<RatedMovie[]>([]);
     const [page, setPage] = useState<number>(1);
     const [searchString, setSearchString] = useState<string>('');
+    const [genres, setGenres] = useState<Genre[]>([]);
 
     const moviesOnPage = 4;
 
     useEffect(() => {
         const movies = getMoviesRatings();
         if (movies) setMovies(movies);
+
+        new Promise(async () => {
+            const { genres } = await fetchGenres();
+            setGenres(genres);
+        })
+
     }, []);
 
     const searchMovies = () => {
@@ -69,6 +76,7 @@ export default function Rated() {
                         />
                     </Flex>
                     <MoviesList
+                        genres={genres}
                         movies={movies.slice(moviesOnPage * (page - 1), moviesOnPage * page)}
                     />
                     <Pagination
