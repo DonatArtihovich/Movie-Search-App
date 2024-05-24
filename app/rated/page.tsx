@@ -11,7 +11,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { fetchGenres } from "@/app/lib/actions";
 import { useWindowWidth } from "@react-hook/window-size";
-// import useWindowSize from "../lib/hooks/use-window-size";
 
 export default function Rated() {
     const [movies, setMovies] = useState<RatedMovie[]>([]);
@@ -36,10 +35,8 @@ export default function Rated() {
     const searchMovies = () => {
         if (!searchString) {
             const moviesRatings = getMoviesRatings();
-            console.log(moviesRatings);
             if (moviesRatings) setMovies(moviesRatings);
-
-            return
+            return;
         }
 
         setSearched(true);
