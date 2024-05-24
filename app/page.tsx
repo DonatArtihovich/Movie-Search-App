@@ -1,4 +1,4 @@
-import { Burger, Flex, Title } from "@mantine/core";
+import { Flex, Title } from "@mantine/core";
 import { MoviesForm } from "@/app/ui/movies/form";
 import cls from './movies.module.scss'
 import { MoviesList } from "@/app/ui/movies/movies-list";
@@ -19,7 +19,6 @@ export default async function Home({
   }
 }) {
   const movies = await getMovies({ ...searchParams });
-
   const genres: Genre[] = (await fetchGenres()).genres;
 
   return (

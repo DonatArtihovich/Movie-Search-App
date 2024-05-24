@@ -6,7 +6,8 @@ import { Card, Flex, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import { AdditionalDataItem } from '../additional-data-item';
 import { RateButton } from '../../movies/rate-button';
-import useWindowSize from '@/app/lib/hooks/use-window-size';
+// import useWindowSize from '@/app/lib/hooks/use-window-size';
+import { useWindowWidth } from '@react-hook/window-size';
 
 type MainMovieInfoCard = {
     movie: MovieType;
@@ -14,7 +15,7 @@ type MainMovieInfoCard = {
 
 export function MainMovieInfoCard({ movie }: MainMovieInfoCard) {
     const theme = useMantineTheme();
-    const { width } = useWindowSize();
+    const width = useWindowWidth();
 
     const additionalData = [
         { header: 'Duration', data: getTimeString(movie.runtime) },

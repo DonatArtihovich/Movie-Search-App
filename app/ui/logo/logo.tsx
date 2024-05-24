@@ -3,10 +3,11 @@
 import { Flex, Title, useMantineTheme } from '@mantine/core'
 import cls from './logo.module.scss'
 import Image from 'next/image'
-import useWindowSize from '@/app/lib/hooks/use-window-size';
+// import useWindowSize from '@/app/lib/hooks/use-window-size';
+import { useWindowWidth } from '@react-hook/window-size';
 
 export function Logo() {
-    const { width } = useWindowSize();
+    const width = useWindowWidth();
     const theme = useMantineTheme();
 
     return (

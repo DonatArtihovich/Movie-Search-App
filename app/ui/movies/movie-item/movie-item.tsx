@@ -1,11 +1,12 @@
 'use client'
 
-import { Button, Card, Flex, Title, useMantineTheme } from '@mantine/core';
+import { Card, Flex, useMantineTheme } from '@mantine/core';
 import cls from './movie-item.module.scss'
 import Image from 'next/image';
 import Link from 'next/link';
 import { RateButton } from '../rate-button';
-import useWindowSize from '@/app/lib/hooks/use-window-size';
+// import useWindowSize from '@/app/lib/hooks/use-window-size';
+import { useWindowWidth } from '@react-hook/window-size';
 
 type MovieItemProps = {
     movie: Movie;
@@ -14,7 +15,7 @@ type MovieItemProps = {
 
 export function MovieItem({ movie, genres }: MovieItemProps) {
     const theme = useMantineTheme();
-    const { width } = useWindowSize();
+    const width = useWindowWidth();
 
     console.log(movie.genre_ids.map(genreId => genres.find(({ id }) => genreId === Number(id))?.name));
 

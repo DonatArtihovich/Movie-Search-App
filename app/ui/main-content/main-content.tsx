@@ -1,11 +1,13 @@
-'use client'
+'use client';
+
 import cls from './main-content.module.scss'
 import { Burger, Flex, useMantineTheme } from "@mantine/core";
 import { Navbar } from "../navbar";
 import { useState } from 'react';
-import useWindowSize from '@/app/lib/hooks/use-window-size';
+// import useWindowSize from '@/app/lib/hooks/use-window-size';
 import { classNames } from '@/app/lib/class-names';
 import { usePathname } from 'next/navigation';
+import { useWindowWidth } from '@react-hook/window-size';
 
 type MainContentProps = {
     className: string;
@@ -13,7 +15,7 @@ type MainContentProps = {
 }
 
 export function MainContent({ className, children }: MainContentProps) {
-    const { width } = useWindowSize();
+    const width = useWindowWidth();
     const pathname = usePathname();
     const theme = useMantineTheme();
     const notFound = pathname.endsWith('not-found');
